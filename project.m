@@ -1,7 +1,10 @@
 %% Read Voice 
-[signal_1, frequency_sampling1] = audioread('siganls/audio1.wav');
-[signal_2, frequency_sampling2] = audioread('siganls/audio2.wav');
-[signal_3, frequency_sampling3] = audioread('siganls/audio3.wav');
+%[signal_1, frequency_sampling1] = audioread('signals/audio1.wav');
+%[signal_2, frequency_sampling2] = audioread('signals/audio3.wav');
+%[signal_3, frequency_sampling3] = audioread('signals/audio2.wav');
+[signal_1, frequency_sampling1] = audioread('signals/esoo.wav');
+[signal_2, frequency_sampling2] = audioread('signals/ziad.wav');
+[signal_3, frequency_sampling3] = audioread('signals/mohey.wav');
 
 %% Sum first and second channel
 signal_1 = signal_1(:, 1)+signal_1(:, 2);
@@ -39,7 +42,7 @@ phase_signal_3 = unwrap(angle(signal_3_fft));
 
 %% Carrie in frequencyuency Domin
 Carrier_frequencyuency_1 = 5000;
-Carrier_frequencyuency_2 = 3 * 5000;
+Carrier_frequencyuency_2 = 3*5000;
 
 WC_1 = 2*pi * Carrier_frequencyuency_1;
 WC_2 = 2*pi * Carrier_frequencyuency_2;
@@ -77,7 +80,6 @@ frequncy_BandPass = Carrier_frequencyuency_1;
 %% Synchronous Modulation for 3 signals
 FileNames=["Out_1" "Out_2" "Out_3"];
 Carries=[carrier_signal_1 ;carrier_signal_2; carrier_signal_3];
-disp(length(Carries))
 for i = 1:3
     disp(i)
     demodulation(Modulated_Signal,frequncy_BandPass,FileNames(i), Carries(i,:,:), frequency_sampling);
