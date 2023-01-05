@@ -1,7 +1,4 @@
 %% Read Voice 
-%[signal_1, frequency_sampling1] = audioread('signals/audio1.wav');
-%[signal_2, frequency_sampling2] = audioread('signals/audio3.wav');
-%[signal_3, frequency_sampling3] = audioread('signals/audio2.wav');
 [signal_1, frequency_sampling1] = audioread('signals/esoo.wav');
 [signal_2, frequency_sampling2] = audioread('signals/ziad.wav');
 [signal_3, frequency_sampling3] = audioread('signals/mohey.wav');
@@ -81,8 +78,12 @@ frequncy_BandPass = Carrier_frequencyuency_1;
 FileNames=["Out_1" "Out_2" "Out_3"];
 Carries=[carrier_signal_1 ;carrier_signal_2; carrier_signal_3];
 for i = 1:3
-    disp(i)
-    demodulation(Modulated_Signal,frequncy_BandPass,FileNames(i), Carries(i,:,:), frequency_sampling);
+    LowPass=demodulation(Modulated_Signal,frequncy_BandPass,FileNames(i), Carries(i,:,:), frequency_sampling);
+    fftSignal = fftshift(fft(LowPass));
+    N=(length(fftSignal)/2);
+    frequency = (-1*N:N-1);
+    phase=unwrap(angle(fftSignal));
+    plot_signal(t, frequency.',phase,LowPass, abs(fftSignal),i+6, strcat('Deodulated Signal ',num2str(i,' %2d')));
 end
 
 %%
@@ -153,7 +154,7 @@ function plot_signal(length_t, f,angle, time, freq,counter, Time)
     title(strcat(Time, ' Phase'))
 end
 
-function demodulation(signal_modulation, frequncy_BandPass, out_name, carrier_signal, frequency_signal_sampling)
+function lpf=demodulation(signal_modulation, frequncy_BandPass, out_name, carrier_signal, frequency_signal_sampling)
     demodulationdSignal = 2 * (signal_modulation .* carrier_signal);
     lpf = lowpass(demodulationdSignal, frequncy_BandPass, frequency_signal_sampling);
     audiowrite(strcat("Output_signals/", out_name, '.wav'), lpf, frequency_signal_sampling);
@@ -166,7 +167,6 @@ function Array_of_carries = CarriersPhase(Carrier_frequencyuency_1, Carrier_freq
      carry_3 = sin((2*pi * Carrier_frequencyuency_2 * time) + ((deg * pi) / 180));
      Array_of_carries=[carry_1; carry_2; carry_3];
 end
-
 function Array_of_carries  = CarriersDifferentFc(Carrier_frequencyuency_1, Carrier_frequencyuency_2, frequency_dc,t)
 
      carry_1 = cos(2*pi * (Carrier_frequencyuency_1 + frequency_dc) * t);
