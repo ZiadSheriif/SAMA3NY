@@ -1,15 +1,26 @@
 %% Read Voice 
-[signal_1, frequency_sampling1] = audioread('signals/esoo.wav');
-[signal_2, frequency_sampling2] = audioread('signals/ziad.wav');
+[signal_1, frequency_sampling1] = audioread('signals/ziad.wav');
+[signal_2, frequency_sampling2] = audioread('signals/esoo.wav');
 [signal_3, frequency_sampling3] = audioread('signals/mohey.wav');
 
+%%  Resampling the signals
+FsNew = 250000;
+frequency_sampling=FsNew;
+ratio=FsNew/frequency_sampling1;
+[temp_P, temp_Q] = rat(ratio);
+signal_1 = resample(signal_1, temp_P, temp_Q);
+
+ratio=FsNew/frequency_sampling2;
+[temp_P, temp_Q] = rat(ratio);
+signal_2 = resample(signal_2, temp_P, temp_Q);
+
+ratio=FsNew/frequency_sampling3;
+[temp_P, temp_Q] = rat(ratio);
+signal_3 = resample(signal_3, temp_P, temp_Q);
 %% Sum first and second channel
 signal_1 = signal_1(:, 1)+signal_1(:, 2);
 signal_2 = signal_2(:, 1)+ signal_2(:, 2);
 signal_3 = signal_3(:, 1)+signal_3(:, 2);
-
-%% frequency Sampling 
-frequency_sampling = frequency_sampling1;
 
 %% set maxuim length between 3 signals
 length_1 = length(signal_1);
@@ -38,8 +49,8 @@ phase_signal_2 = unwrap(angle(signal_2_fft));
 phase_signal_3 = unwrap(angle(signal_3_fft));
 
 %% Carrie in frequencyuency Domin
-Carrier_frequencyuency_1 = 5000;
-Carrier_frequencyuency_2 = 3*5000;
+Carrier_frequencyuency_1 = 50000;
+Carrier_frequencyuency_2 = 2*50000;
 
 WC_1 = 2*pi * Carrier_frequencyuency_1;
 WC_2 = 2*pi * Carrier_frequencyuency_2;
@@ -72,18 +83,17 @@ Modulated_Signal = modulatedSignal_t1 + modulatedSignal_t2 + modulatedSignal_t3;
 Modulated_Signal_f = fftshift(fft(Modulated_Signal));
 phase_mod = unwrap(angle(Modulated_Signal_f));
 
-frequncy_BandPass = Carrier_frequencyuency_1;
-
+frequncy_BandPass =24000;
+frequncy_BandPass2 =24000;
 %% Synchronous Modulation for 3 signals
 FileNames=["Out_1" "Out_2" "Out_3"];
 Carries=[carrier_signal_1 ;carrier_signal_2; carrier_signal_3];
 for i = 1:3
-    LowPass=demodulation(Modulated_Signal,frequncy_BandPass,FileNames(i), Carries(i,:,:), frequency_sampling);
-    fftSignal = fftshift(fft(LowPass));
-    N=(length(fftSignal)/2);
-    frequency = (-1*N:N-1);
-    phase=unwrap(angle(fftSignal));
-    plot_signal(t, frequency.',phase,LowPass, abs(fftSignal),i+6, strcat('Deodulated Signal ',num2str(i,' %2d')));
+    if i == 1
+        LowPass=demodulation(Modulated_Signal,frequncy_BandPass,FileNames(i), Carries(i,:,:), frequency_sampling,i+6,t);
+    else
+        LowPass=demodulation(Modulated_Signal,frequncy_BandPass2,FileNames(i), Carries(i,:,:), frequency_sampling,i+6,t);
+    end
 end
 
 %%
@@ -91,21 +101,25 @@ end
 Carries_phase_10 = CarriersPhase(Carrier_frequencyuency_1, Carrier_frequencyuency_2, 10,t);
 FileNames_phases_10=["Out_1_phase_10" "Out_2_phase_10" "Out_3_phase_10"];
 for i = 1:3
-    demodulation(Modulated_Signal,frequncy_BandPass,FileNames_phases_10(i), Carries_phase_10(i,:,:), frequency_sampling);
+    demodulation(Modulated_Signal,frequncy_BandPass,FileNames_phases_10(i), Carries_phase_10(i,:,:), frequency_sampling,i+9,t);
 end
 
 % Phase Shift: 30
 Carries_phase_30 = CarriersPhase(Carrier_frequencyuency_1, Carrier_frequencyuency_2, 30,t);
 FileNames_phases_30=["Out_1_phase_30" "Out_2_phase_30" "Out_3_phase_30"];
 for i = 1:3
-    demodulation(Modulated_Signal,frequncy_BandPass,FileNames_phases_30(i), Carries_phase_30(i,:,:), frequency_sampling);
+    demodulation(Modulated_Signal,frequncy_BandPass,FileNames_phases_30(i), Carries_phase_30(i,:,:), frequency_sampling,i+13,t);
 end
 
 % Phase Shift: 90
 Carries_phase_90 = CarriersPhase(Carrier_frequencyuency_1, Carrier_frequencyuency_2, 90,t);
 FileNames_phases_90=["Out_1_phase_90" "Out_2_phase_90" "Out_3_phase_90"];
 for i = 1:3
-    demodulation(Modulated_Signal,frequncy_BandPass,FileNames_phases_90(i), Carries_phase_90(i,:,:), frequency_sampling);
+     if i == 1
+        demodulation(Modulated_Signal,frequncy_BandPass,FileNames_phases_90(i), Carries_phase_90(i,:,:), frequency_sampling,i+17,t);
+     else
+        demodulation(Modulated_Signal,frequncy_BandPass2,FileNames_phases_90(i), Carries_phase_90(i,:,:), frequency_sampling,i+17,t);
+     end
 end
 
 %%
@@ -113,15 +127,15 @@ end
 Carries_shift_2 = CarriersDifferentFc(Carrier_frequencyuency_1, Carrier_frequencyuency_2, 2,t);
 FileNames_shift_2=["Out_1_shift_2" "Out_2_shift_2" "Out_3_shift_2"];
 for i = 1:3
-    demodulation(Modulated_Signal,frequncy_BandPass,FileNames_shift_2(i), Carries_shift_2(i,:,:), frequency_sampling);
+    demodulation(Modulated_Signal,frequncy_BandPass,FileNames_shift_2(i), Carries_shift_2(i,:,:), frequency_sampling,i+21,t);
 end
 
 %  local carrier frequencyuency different than Fc by 10 Hz in Demodulation
 
 Carries_shift_10 = CarriersDifferentFc(Carrier_frequencyuency_1, Carrier_frequencyuency_2, 10,t);
-FileNames_shift_10=["Out_2_shift_10" "Out_2_shift_10" "Out_3_shift_10"];
+FileNames_shift_10=["Out_1_shift_10" "Out_2_shift_10" "Out_3_shift_10"];
 for i = 1:3
-    demodulation(Modulated_Signal,frequncy_BandPass,FileNames_shift_10(i), Carries_shift_10(i,:,:), frequency_sampling);
+    demodulation(Modulated_Signal,frequncy_BandPass,FileNames_shift_10(i), Carries_shift_10(i,:,:), frequency_sampling,i+25,t);
 end
 
 % Ploting  Signals
@@ -154,9 +168,14 @@ function plot_signal(length_t, f,angle, time, freq,counter, Time)
     title(strcat(Time, ' Phase'))
 end
 
-function lpf=demodulation(signal_modulation, frequncy_BandPass, out_name, carrier_signal, frequency_signal_sampling)
-    demodulationdSignal = 2 * (signal_modulation .* carrier_signal);
+function lpf=demodulation(signal_modulation, frequncy_BandPass, out_name, carrier_signal, frequency_signal_sampling,figure,t)
+    demodulationdSignal =  2* (signal_modulation .* carrier_signal);
     lpf = lowpass(demodulationdSignal, frequncy_BandPass, frequency_signal_sampling);
+    fftSignal = fftshift(fft(lpf));
+    N=(length(fftSignal)/2);
+    frequency = (-1*N:N-1);
+    phase=unwrap(angle(fftSignal));
+    plot_signal(t, frequency.',phase,lpf, abs(fftSignal),figure, out_name);
     audiowrite(strcat("Output_signals/", out_name, '.wav'), lpf, frequency_signal_sampling);
 end
 
