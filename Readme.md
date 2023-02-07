@@ -1,11 +1,11 @@
-# <img  align="center" width= 65px  src="https://media3.giphy.com/media/Plsxk51MC0UArt83I3/giphy.gif?cid=ecf05e47x5twjvpaaeqgr2yfqkm4kk8ey6vrzzdbasqhsul6&rid=giphy.gif&ct=s"> SAMA3NY
+# <img  align="center" width= 65px  src="https://media0.giphy.com/media/MeDFeqDC4EMFiKEEMn/giphy.gif?cid=ecf05e4768qyfkj6aq97kbwzznwnfataycnpnnistsed2qbp&rid=giphy.gif&ct=s"> SAMA3NY
 
 <div align="center">
 
-<img height=425px src="https://media1.giphy.com/media/aSZSj0mT8f6tW/giphy.gif?cid=ecf05e47h1ah4mrjxg2rwi3a93595da0vbl6mk41uqy1lxnn&rid=giphy.gif&ct=g">
+<img height=500px src="https://cdn.dribbble.com/users/945078/screenshots/2863933/no-signal___2x.gif">
 <div align="center"  width=10%>
 
-### "Know exactly what you want to improve your time management ⏰"
+### "Don't Worry, Your Message Will Be Sent 🔊"
 
 </div>
 </div>
@@ -55,7 +55,7 @@ Perform synchronous demodulation to restore the three signals.
 
 </ol>
 </li>
-<li> <a href="">Project Description</a></li>
+<li> <a href="https://github.com/ZiadSheriif/SAMA3NY/blob/main/project.docx">Project Description</a></li>
 </ul>
 <hr style="background-color: #4b4c60"></hr>
 <a id = "Started"></a>
