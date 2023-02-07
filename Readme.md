@@ -225,7 +225,11 @@ Perform demodulation two times with a local carrier frequency that is different 
 </tr>
 </table>
 
-### Demodulation with phase shift 10:
+<div align="center">
+<hr  width="60%" style="background-color: #4b4c60"></hr>
+</div>
+
+### 💻 Demodulation with phase shift 10:
 
 <table>
 <tr>
@@ -245,7 +249,11 @@ Perform demodulation two times with a local carrier frequency that is different 
 > **Note**: Interference in sounds between signal 2 and signal 3 when make demodulation to them.
 Signal 1 become little weaker.
 
-### Demodulation with phase shift 30:
+<div align="center">
+<hr  width="60%" style="background-color: #4b4c60"></hr>
+</div>
+
+### 💻 Demodulation with phase shift 30:
 
 <table>
 <tr>
@@ -264,9 +272,11 @@ Signal 1 become little weaker.
 
 > **Note**: More Interference in sounds between signal 2 and signal 3 when make demodulation to them.
 Signal 1 become Weaker.
+<div align="center">
+<hr  width="60%" style="background-color: #4b4c60"></hr>
+</div>
 
-
-### Demodulation with phase shift 90:
+### 💻 Demodulation with phase shift 90:
 
 <table>
 <tr>
@@ -285,8 +295,11 @@ Signal 1 become Weaker.
 
 > **Note**: When make demodulation to signal 3 output is signal 2 and make demodulation to signal 2 output is signal3 
 Signal 1 be equal zero (no sound).
+<div align="center">
+<hr  width="60%" style="background-color: #4b4c60"></hr>
+</div>
 
-### Demodulation with a local carrier frequency that is different by 2 Hz:
+### 💻 Demodulation with a local carrier frequency that is different by 2 Hz:
 
 <table>
 <tr>
@@ -305,7 +318,11 @@ Signal 1 be equal zero (no sound).
 
 > **Note**: Interference in sounds between signal 2 and signal 3 when make demodulation to them.
 All signals have been occurred distortion on them.
-### Demodulation with a local carrier frequency that is different by 10 Hz:
+<div align="center">
+<hr  width="60%" style="background-color: #4b4c60"></hr>
+</div>
+
+### 💻 Demodulation with a local carrier frequency that is different by 10 Hz:
 
 <table>
 <tr>
