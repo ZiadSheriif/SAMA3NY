@@ -12,10 +12,11 @@
 
 <hr style="background-color: #4b4c60"></hr>
 
-## <img align= center width=50px height=50px src="https://user-images.githubusercontent.com/71986226/154075883-2a5679d2-b411-448f-b423-9565babf35aa.gif"> Table of Contents
+## <img align= center width=50px height=50px src="https://thumbs.gfycat.com/HeftyDescriptiveChimneyswift-size_restricted.gif"> Table of Contents
 
 - <a href ="#about"> 📙 Overview</a>
 - <a href ="#Started"> 💻 Get Started</a>
+- <a href ="#work"> ⚒️ Work Explanation</a>
 - <a href ="#Contributors"> ✨ Contributors</a>
 - <a href ="#License"> 🔒 License</a>
 <hr style="background-color: #4b4c60"></hr>
@@ -99,13 +100,136 @@ cd ./Output_signals
 </ol>
 
 <hr style="background-color: #4b4c60"></hr>
-<a id ="Video"></a>
 
+
+<a id ="work"></a>
+
+## <img  align="center" width= 70px src="https://media2.giphy.com/media/KoNYPNsRlbkCWD2ykO/giphy.gif?cid=ecf05e477yrbjph7rxl4lw1ya1upgcck9fju3nipn3iu8s8n&rid=giphy.gif&ct=s"> Work Explanation
+
+### Input signals
+
+> Firstly, we read three signals with different sounds and make them have the same frequency sampling =250000 by make resemble to them and find the length of each one along with max length in-order to be able to sum all modulated signal of each input. We make all audios have the same length by adjusting all of them by adding zero to make have same length. Secondly got time and frequencies intervals. Then we calculated omega (ω1, ω2) by ω=2*pi*const in frequency domain. Then we got carrier in cos and sin domain 
+Carrier Signal One=cos (2*pi* ω1) 
+Carrier Signal Two=sin (2*pi* ω2)
+<br>
+<table>
+<tr>
+<th >
+<div  align="center">
+<strong>
+Signal 1
+</strong>
+</div>
+</th>
+<th>
+<div  align="center">
+<strong>
+Signal 2
+</strong>
+</div>
+</th>
+<th>
+<div  align="center">
+<strong>
+Signal 3
+</strong>
+</div>
+</th>
+</tr>
+<tr>
+<td>
+<img  src="https://user-images.githubusercontent.com/71986226/217222582-ae79fd8f-99bb-4d7b-8010-1b3e024882d4.png">
+</td>
+<td>
+<img src="https://user-images.githubusercontent.com/71986226/217222763-a91bfc2f-a14c-4ede-b24e-e02b5aed4761.png">
+</td>
+<td>
+<img src="https://user-images.githubusercontent.com/71986226/217222805-5bdda761-b810-4e59-9fd1-92dfecfb6abe.png">
+</td>
+
+</tr>
+</table>
+
+### Modulated signal:
+
+<ol>
+<li>
+Calculate modulated signal by multiplying signal and carrier
+</li>
+<li>
+Calculate Fourier transform of modulated signal returned from step 1
+</li>
+<li>
+Calculate phase of modulated signal returned from step 1
+</li>
+<li>
+Sum all modulated signals of all audios
+</li>
+<li>
+FFT to summation of modulated signals
+</li>
+<li>
+Calculate phase of modulated signals
+</li>
+<li>
+Calculate frequency band pass which is used in de-modulation
+</li>
+</ol>
+
+<table>
+<tr>
+<td>
+<img  src="https://user-images.githubusercontent.com/71986226/217224606-3307e139-83a1-406f-b6ae-4da97931b544.png">
+</td>
+<td>
+<img src="https://user-images.githubusercontent.com/71986226/217224634-dbfd5ad9-6215-4545-89e5-818c8222a580.png">
+</td>
+<td>
+<img src="https://user-images.githubusercontent.com/71986226/217224649-b1e83f5a-943d-4b2d-80d2-4eb6a8cc0665.png">
+</td>
+
+</tr>
+</table>
+
+### De-modulation: 
+
+<ol>
+<li>
+Calculate demodulated signal by multiplying carrier and modulation signal
+</li>
+<li>
+Calculate low pass filter used frequency sampling.
+</li>
+<li>
+Perform demodulation three times with phase shifts of 10, 30, 90 degrees for both carriers 
+
+> **Note**: (before each phase shift calculate carrier phase).
+</li>
+<li>
+Perform demodulation two times with a local carrier frequency that is different by 2 Hz and 10 Hz from its carrier frequency.
+</li>
+</ol>
+
+<table>
+<tr>
+<td>
+<img  src="https://user-images.githubusercontent.com/71986226/217225512-9a5e7d8b-e78a-4d59-b8e9-c370c574b941.png">
+</td>
+<td>
+<img src="https://user-images.githubusercontent.com/71986226/217225595-af0d2f40-ce55-4746-a317-6124d61ce782.png">
+</td>
+<td>
+<img src="https://user-images.githubusercontent.com/71986226/217225664-254a6957-a752-4e92-92b1-c151f4430710.png">
+</td>
+
+</tr>
+</table>
+<hr style="background-color: #4b4c60"></hr>
 
 
 <a id ="Contributors"></a>
 
-## <img  align="center" width= 70px height =55px src="https://media0.giphy.com/media/Xy702eMOiGGPzk4Zkd/giphy.gif?cid=ecf05e475vmf48k83bvzye3w2m2xl03iyem3tkuw2krpkb7k&rid=giphy.gif&ct=s">Contributors
+## <img  align="center" width= 70px height =55px src="https://media0.giphy.com/media/Xy702eMOiGGPzk4Zkd/giphy.gif?cid=ecf05e475vmf48k83bvzye3w2m2xl03iyem3tkuw2krpkb7k&rid=giphy.gif&ct=s"> Contributors
 
 <br>
 <table >
