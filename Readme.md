@@ -72,15 +72,30 @@ git clone https://github.com/ZiadSheriif/SAMA3NY
 ```
 
 </li>
-<li>Run File</li>
+<li>Put Inputs in folder </li>
+<br>
 
+``` sh
+cd ./signals
+```
+
+</li>
+<li>Run File</li>
+<br>
 
 ``` sh
 cd ./project.m
 ```
 
 </li>
+<li>Output will be in folder </li>
+<br>
 
+``` sh
+cd ./Output_signals
+```
+
+</li>
 </ol>
 
 <hr style="background-color: #4b4c60"></hr>
