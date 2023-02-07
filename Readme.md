@@ -262,7 +262,7 @@ Signal 1 become little weaker.
 </tr>
 </table>
 
-> **Comment**: More Interference in sounds between signal 2 and signal 3 when make demodulation to them.
+> **Note**: More Interference in sounds between signal 2 and signal 3 when make demodulation to them.
 Signal 1 become Weaker.
 
 
@@ -283,7 +283,7 @@ Signal 1 become Weaker.
 </tr>
 </table>
 
-> **Comment**: When make demodulation to signal 3 output is signal 2 and make demodulation to signal 2 output is signal3 
+> **Note**: When make demodulation to signal 3 output is signal 2 and make demodulation to signal 2 output is signal3 
 Signal 1 be equal zero (no sound).
 
 ### Demodulation with a local carrier frequency that is different by 2 Hz:
@@ -303,7 +303,7 @@ Signal 1 be equal zero (no sound).
 </tr>
 </table>
 
-> **Comment**: Interference in sounds between signal 2 and signal 3 when make demodulation to them.
+> **Note**: Interference in sounds between signal 2 and signal 3 when make demodulation to them.
 All signals have been occurred distortion on them.
 ### Demodulation with a local carrier frequency that is different by 10 Hz:
 
@@ -322,7 +322,7 @@ All signals have been occurred distortion on them.
 </tr>
 </table>
 
-> **Comment**: More Interference in sounds between signal 2 and signal 3 when make demodulation to them.
+> **Note**: More Interference in sounds between signal 2 and signal 3 when make demodulation to them.
 All signals have been occurred more distortion on them.
 
 <hr style="background-color: #4b4c60"></hr>
