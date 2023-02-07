@@ -242,7 +242,7 @@ Perform demodulation two times with a local carrier frequency that is different 
 </tr>
 </table>
 
-> **Comment**: Interference in sounds between signal 2 and signal 3 when make demodulation to them.
+> **Note**: Interference in sounds between signal 2 and signal 3 when make demodulation to them.
 Signal 1 become little weaker.
 
 ### Demodulation with phase shift 30:
