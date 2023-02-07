@@ -363,4 +363,4 @@ All signals have been occurred more distortion on them.
 
 ## 🔒 License
 
-> **Note**: This software is licensed under MIT License, See [License](https://github.com/ZiadSheriif/SAMA3NY/blob/main/LICENSE) for more information ©Ziad Sherif .
+> **Note**: This software is licensed under MIT License, See [License](https://github.com/ZiadSheriif/SAMA3NY/blob/main/LICENSE) for more information ©SAMA3NY.
